@@ -8,6 +8,7 @@ namespace SnakeLadder
         public const int NO_OF_PLAYERS = 1;
         public const int IS_LADDER = 1;
         public const int IS_SNAKE = 2;
+        public const int WINNING_POSITION = 100;
 
         static void Main(string[] args)
         {
@@ -15,37 +16,41 @@ namespace SnakeLadder
            
             //Variables
             int position = 0;
+            int newPosition;
 
-            Random random = new Random();
-
-            int die = random.Next(1, 7);
-            Console.WriteLine("Rolling: " + die);
-
-            //Checking 
-            int optionPlay = random.Next(0, 3);
-            switch (optionPlay)
+            while (position < WINNING_POSITION)
             {
-                case IS_LADDER:
-                    position += die;
-                    Console.WriteLine("IS_LADDER");
-                    break;
-                case IS_SNAKE:
-                    if (position == 0)
-                    {
-                        position = 0;
+                
+                Random random = new Random();
+
+                int die = random.Next(1, 7);
+                Console.WriteLine("Rolling: " + die);
+
+                //Checking 
+                int optionPlay = random.Next(0, 3);
+                switch (optionPlay)
+                {
+                    case IS_LADDER:
+                        Console.WriteLine("IS_LADDER");
+                        position += die;
+                        newPosition = position;
+                        break;
+                    case IS_SNAKE:
                         Console.WriteLine("IS_SNAKE");
-                    }
-                    else
-                    {
                         position -= die;
-                        Console.WriteLine("IS_SNAKE");
-                    }
-                    break;
-                default:
-                    Console.WriteLine("NO_PLAY");
-                    break;
+                        if (position < 0)
+                        {
+                            position = 0;
+                        }
+                        newPosition = position;
+                        break;
+                    default:
+                        Console.WriteLine("NO_PLAY");
+                        newPosition = position;
+                        break;
+                }
+                Console.WriteLine("NEW_POSITION: " + newPosition);
             }
-            Console.WriteLine("NEW_POSITION: " + position);
         }
     }
 }
