@@ -1,5 +1,8 @@
 ﻿using System;
-
+/// <summary>
+/// Author: Sunny Jha
+/// Snake Ladder Problem
+/// </summary>
 namespace SnakeLadder
 {
     class Program
