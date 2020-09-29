@@ -33,7 +33,10 @@ namespace SnakeLadder
                     case IS_LADDER:
                         Console.WriteLine("IS_LADDER");
                         position += die;
-                        newPosition = position;
+                        if (position > 100)
+                        {
+                            position -= die;
+                        }
                         break;
                     case IS_SNAKE:
                         Console.WriteLine("IS_SNAKE");
@@ -42,13 +45,12 @@ namespace SnakeLadder
                         {
                             position = 0;
                         }
-                        newPosition = position;
                         break;
                     default:
                         Console.WriteLine("NO_PLAY");
-                        newPosition = position;
                         break;
                 }
+                newPosition = position;
                 Console.WriteLine("NEW_POSITION: " + newPosition);
             }
         }
