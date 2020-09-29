@@ -17,6 +17,7 @@ namespace SnakeLadder
             //Variables
             int position = 0;
             int newPosition;
+            int timesDiceRolled = 0;
 
             while (position < WINNING_POSITION)
             {
@@ -51,8 +52,10 @@ namespace SnakeLadder
                         break;
                 }
                 newPosition = position;
+                timesDiceRolled++;
                 Console.WriteLine("NEW_POSITION: " + newPosition);
             }
+            Console.WriteLine("Dice Rolled to Win: " + timesDiceRolled);
         }
     }
 }
